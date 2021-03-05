@@ -1,0 +1,52 @@
+@import url("clearfix.css");
+@import url("public.css");
+.nav{
+  height: 88px;
+  border-bottom: 2px solid #e8e8e8;
+  margin-top: 100px;
+}
+.nav .logo{
+  margin:0 0 0 80px;
+  line-height: 88px;
+  height: 88px;
+}
+.nav .main{
+  margin-left: 60px;
+  line-height: 88px;
+  height: 88px;
+}
+.nav .user{
+  margin: 0 16px 0 60px;
+  line-height: 88px;
+  height: 88px;
+}
+
+.nav .main a{
+  text-decoration: none;
+  margin: 0 12px;
+}
+.nav .user a{
+  font-size: 14px;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 18px;
+  -webkit-border-radius: 18px;
+  -moz-border-radius: 18px;
+  -ms-border-radius: 18px;
+  -o-border-radius: 18px;
+  margin: 22px 0;
+}
+.nav .user a:nth-of-type(1){
+  background-color: #282920;
+  margin-right: 20px;
+  color: #ffffff;
+}
+.nav .user a:nth-of-type(2){
+  background-color: #ffd40d;
+  color: #000000;
+}
+
+
