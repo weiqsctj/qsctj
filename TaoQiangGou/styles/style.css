@@ -1,0 +1,67 @@
+@import url("clearfix.css");
+@import url("public.css");
+.page{
+  height: 180px;    
+  width: 395px;
+  border: 1px solid #000000;
+  overflow: hidden;
+}
+.img{
+  width: 180px;
+  height:180px;
+  background-color: #dcc6b9;
+}
+.info{
+  width: 180px;
+  height: 180px;
+  background-color: #f5dd87;
+  margin-left: 35px;
+}
+.title{
+  width: 161px;
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 11px;
+}
+.info-detail{
+  margin-top: 12px;
+  line-height: 28px;
+  font-size: 12px;
+  color: #989898;
+}
+.progress{
+  background-color: #fac6b6;
+  width: 159px;
+  height: 6px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  overflow: hidden;
+}
+.progress .sold{
+  width: 30%;
+  background-color: red;
+  height: 6px;
+}
+.sold{
+  color: #FE3338;
+  line-height: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+.price span:nth-of-type(1){
+  font-size: 12px;
+  color: red;
+}
+.price span:nth-of-type(2){
+  font-size: 19px;
+  color: #ff6113;
+}
+.price span:nth-of-type(3){
+  font-size: 12px;
+  color: #989898;
+  text-decoration: line-through;
+  margin-left: 6px;
+}
