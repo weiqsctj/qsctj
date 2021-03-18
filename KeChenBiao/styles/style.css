@@ -1,0 +1,49 @@
+body{
+  background-color: #efedec;
+}
+table{
+  margin: 100px auto;
+  border-collapse: collapse;
+}
+th,td{
+  padding: 20px;
+  text-align: center;
+  width: 130px;
+}
+caption{
+  height: 100px;
+  margin-bottom: 40px;
+}
+p{
+  padding: 0;
+  margin: 0;
+}
+.title{
+  height: 50px;
+  font: bold 40px/50px "微软雅黑";
+}
+.sub-title{
+  font: 18px/50px "SF-Pro-Text-Light";
+}
+tr td,tr th{
+  border-bottom:1px solid #221e1f
+}
+
+table tr th:first-of-type{
+  border-bottom: 3px solid #221e1f;
+}
+
+tbody tr:last-of-type th{
+  border-bottom: none;
+}
+
+tbody tr:last-of-type td{
+  border-bottom: none;
+}
+
+thead tr th:nth-of-type(2n){
+  background-color: #e2ddda;
+}
+tr td:nth-of-type(2n+1){
+  background-color: #e2ddda;
+}
