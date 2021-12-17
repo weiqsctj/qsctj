@@ -1,0 +1,22 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+#panel {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 400px;
+    padding: 20px;
+    margin: 100px auto;
+}
+
+.panel-footer {
+    text-align: center;
+}
+
+.panel-footer button {
+    margin-left: 20px;
+    margin-top: 20px;
+}
