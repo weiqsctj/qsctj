@@ -1,3 +1,11 @@
+/**
+ * @description
+ * @author (weiqsctj-清时)
+ * @date 2022-01-19
+ * @param {*} id
+ * @returns 
+ */
+
 function $(id){
     return typeof id === 'string'?document.getElementById(id):null;
 }
