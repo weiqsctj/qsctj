@@ -9,10 +9,10 @@
 ### 3. 课程表 制作
 ![课程表](KeChenBiao/kechenbiao.png)
 ### 4. 手风琴菜单 制作
-![手风琴菜单](Accordion-Menu/Menu.gif)
+![手风琴菜单](Accordion-Menu/Menu.png)
 ### 5. 音乐盒 制作
 ![音乐盒](YinYuehe/yinyuehe.png)
 ### 6. 衣服相册 制作
-![衣服相册](YifuXiangCe/images/xiangce.gif)
+![衣服相册](YifuXiangCe/images/xiangce.png)
 ### 7. 页面 制作
-![页面](YeMian/images/yemian.jpg)
+![页面](YeMian/images/yemian.png)
