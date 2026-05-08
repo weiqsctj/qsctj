@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8">
@@ -7,30 +7,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/style.css">
-  <title>TaoQiangGou</title>
+  <title>淘抢购 - 限时特惠</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-  <div class="page clearfix">
-    <div class="img fl">
-      <img src="images/0200.jpg" alt="">
+  <div class="product-card">
+    <!-- 左侧图片区域 -->
+    <div class="image-section">
+      <div class="image-wrapper">
+        <img src="images/0200.jpg" alt="可爱女友" class="product-image">
+        <!-- 限时抢购标签 -->
+        <div class="flash-tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>限时抢</span>
+        </div>
+        <!-- 折扣标签 -->
+        <div class="discount-tag">
+          <span class="discount-percent">5.5</span>
+          <span class="discount-label">折</span>
+        </div>
+        <!-- 悬浮遮罩 -->
+        <div class="image-overlay">
+          <div class="overlay-content">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <span>快速预览</span>
+          </div>
+        </div>
+      </div>
+      <!-- 进度条装饰 -->
+      <div class="mini-progress">
+        <div class="mini-progress-bar"></div>
+        <span class="mini-progress-text">30% 已抢</span>
+      </div>
     </div>
 
-    <div class="info fl">
-      <p class="title">[限时89元]可爱女友</p>
-      <p class="info-detail">力生110，套装更优惠</p>
-      <div class="progress">
-        <div class="sold"></div>
+    <!-- 右侧信息区域 -->
+    <div class="info-section">
+      <div class="info-header">
+        <span class="brand-tag">品牌精选</span>
+        <span class="hot-tag">热销</span>
       </div>
-      <p class="sold clearfix">
-        <span class="fl">10%</span>
-        <span class="fr">已抢1105件</span>
-      </p>
-      <p class="price">
-        <span>￥</span>
-        <span>89</span>
-        <span>$199.00</span>
-      </p>
+      <h2 class="product-title">[限时89元]可爱女友</h2>
+      <p class="product-desc">力生110，套装更优惠</p>
+      
+      <!-- 进度条 -->
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill">
+            <div class="progress-glow"></div>
+          </div>
+        </div>
+        <div class="progress-info">
+          <span class="progress-percent">30%</span>
+          <span class="progress-count">已抢 <strong>1105</strong> 件</span>
+        </div>
+      </div>
+
+      <!-- 价格区域 -->
+      <div class="price-section">
+        <div class="current-price">
+          <span class="currency">￥</span>
+          <span class="amount">89</span>
+        </div>
+        <div class="original-price">
+          <span>￥199.00</span>
+        </div>
+        <div class="save-info">
+          立省 <span>￥110</span>
+        </div>
+      </div>
+
+      <!-- 抢购按钮 -->
+      <button class="buy-btn">
+        <span>立即抢购</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </button>
     </div>
   </div>
 </body>

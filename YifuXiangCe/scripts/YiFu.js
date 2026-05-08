@@ -1,26 +1,114 @@
-//1.获取事件源
+/**
+ * @description 服饰相册组件
+ * @author weiqsctj-清时
+ * @date 2022-01-19
+ * @module Gallery
+ */
 
-var bigImg = document.getElementById('bigImg');
-var smallImgs = document.getElementsByClassName('smallImg');
-for (var i = 0; i < smallImgs.length; i++) {
+(function(window) {
+    'use strict';
 
-    //2. 遍历集合，给每个img标签添加组件
-    smallImgs[i].onmouseover = function () {
+    // DOM元素引用
+    const elements = {
+        bigImg: document.getElementById('bigImg'),
+        thumbnailItems: document.querySelectorAll('.thumbnail-item'),
+        imageCounter: document.querySelector('.image-counter'),
+        infoTitle: document.getElementById('infoTitle')
+    };
 
-        //3.事件处理程序
-        //3.1在悬浮到每一个li标签之前，先把所有的li标签的类名都置为空值
+    // 图片数据
+    const images = [
+        { src: 'images/1.jpg', title: '款式 01' },
+        { src: 'images/2.jpg', title: '款式 02' },
+        { src: 'images/3.jpg', title: '款式 03' },
+        { src: 'images/4.jpg', title: '款式 04' },
+        { src: 'images/5.jpg', title: '款式 05' },
+        { src: 'images/6.jpg', title: '款式 06' }
+    ];
 
-        for (var j = 0; j < smallImgs.length; j++) {
-
-            smallImgs[j].parentNode.parentNode.setAttribute('class', '');
-
-        }
-        //3.2修改大图的src属性值
-        var smallImgSrc = this.getAttribute('src');//this指smallimg[i]对象
-        bigImg.setAttribute('src', smallImgSrc);
-
-        //3.3给鼠标悬浮的img标签的父标签(li)添加类
-        this.parentNode.parentNode.setAttribute('class', 'active');//“class='active'”指的是标签的类，
-        // active类常用于元素被激活时的样式。//这里用于css里
+    /**
+     * 更新大图显示
+     * @param {number} index - 图片索引
+     */
+    function updatePreview(index) {
+        const image = images[index];
+        
+        // 添加淡出效果
+        elements.bigImg.style.opacity = '0';
+        
+        setTimeout(function() {
+            // 更新图片src
+            elements.bigImg.setAttribute('src', image.src);
+            
+            // 图片加载完成后显示
+            elements.bigImg.onload = function() {
+                elements.bigImg.style.opacity = '1';
+            };
+            
+            // 更新计数器
+            elements.imageCounter.textContent = (index + 1) + ' / ' + images.length;
+            
+            // 更新标题
+            elements.infoTitle.textContent = image.title;
+        }, 150);
     }
-}
+
+    /**
+     * 移除所有激活状态
+     */
+    function clearActive() {
+        elements.thumbnailItems.forEach(function(item) {
+            item.classList.remove('active');
+        });
+    }
+
+    /**
+     * 初始化事件绑定
+     */
+    function initEvents() {
+        elements.thumbnailItems.forEach(function(item, index) {
+            item.addEventListener('click', function() {
+                // 移除所有激活状态
+                clearActive();
+                
+                // 添加当前激活状态
+                item.classList.add('active');
+                
+                // 更新预览
+                updatePreview(index);
+            });
+
+            // 鼠标悬停效果
+            item.addEventListener('mouseenter', function() {
+                item.style.transform = 'translateX(8px)';
+            });
+
+            item.addEventListener('mouseleave', function() {
+                if (!item.classList.contains('active')) {
+                    item.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    }
+
+    /**
+     * 初始化
+     */
+    function init() {
+        initEvents();
+    }
+
+    // 暴露公共方法
+    window.Gallery = {
+        init: init,
+        updatePreview: updatePreview
+    };
+
+    // DOM加载完成后自动初始化
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})(window);

@@ -1,67 +1,375 @@
 @import url("clearfix.css");
 @import url("public.css");
-.page{
-  height: 180px;    
-  width: 395px;
-  border: 1px solid #000000;
-  overflow: hidden;
+
+:root {
+    --primary-color: #ff4757;
+    --primary-gradient-start: #ff4757;
+    --primary-gradient-end: #ff6b81;
+    --secondary-color: #ffa502;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --bg-color: #ffffff;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-base: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 8px 30px rgba(255, 71, 87, 0.3);
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.img{
-  width: 180px;
-  height:180px;
-  background-color: #dcc6b9;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.info{
-  width: 180px;
-  height: 180px;
-  background-color: #f5dd87;
-  margin-left: 35px;
+
+body {
+    background: linear-gradient(135deg, #ff475710 0%, #ffa50210 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
-.title{
-  width: 161px;
-  font-size: 16px;
-  line-height: 22px;
-  margin-top: 11px;
+
+.product-card {
+    display: flex;
+    width: 420px;
+    background: var(--bg-color);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-base);
+    transition: var(--transition-base);
 }
-.info-detail{
-  margin-top: 12px;
-  line-height: 28px;
-  font-size: 12px;
-  color: #989898;
+
+.product-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
 }
-.progress{
-  background-color: #fac6b6;
-  width: 159px;
-  height: 6px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
-  overflow: hidden;
+
+/* 左侧图片区域 */
+.image-section {
+    width: 180px;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    position: relative;
 }
-.progress .sold{
-  width: 30%;
-  background-color: red;
-  height: 6px;
+
+.image-wrapper {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
 }
-.sold{
-  color: #FE3338;
-  line-height: 28px;
-  height: 28px;
-  font-size: 12px;
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-base);
 }
-.price span:nth-of-type(1){
-  font-size: 12px;
-  color: red;
+
+.image-wrapper:hover .product-image {
+    transform: scale(1.1);
 }
-.price span:nth-of-type(2){
-  font-size: 19px;
-  color: #ff6113;
+
+/* 限时抢购标签 */
+.flash-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+    border-radius: 20px;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(255, 71, 87, 0.4);
+    z-index: 10;
 }
-.price span:nth-of-type(3){
-  font-size: 12px;
-  color: #989898;
-  text-decoration: line-through;
-  margin-left: 6px;
+
+.flash-tag svg {
+    width: 14px;
+    height: 14px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* 折扣标签 */
+.discount-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #ff6b81 0%, #ff4757 100%);
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.5);
+    z-index: 10;
+}
+
+.discount-percent {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.discount-label {
+    font-size: 10px;
+    opacity: 0.9;
+}
+
+/* 悬浮遮罩 */
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition-base);
+    z-index: 20;
+}
+
+.image-wrapper:hover .image-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 12px;
+}
+
+.overlay-content svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* 底部小进度条 */
+.mini-progress {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.mini-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: #ffeaa7;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.mini-progress-bar::after {
+    content: '';
+    display: block;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+    border-radius: 2px;
+}
+
+.mini-progress-text {
+    font-size: 10px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* 右侧信息区域 */
+.info-section {
+    flex: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.brand-tag, .hot-tag {
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.brand-tag {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.hot-tag {
+    background: rgba(255, 71, 87, 0.1);
+    color: var(--primary-color);
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 6px;
+}
+
+.product-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+/* 进度条 */
+.progress-container {
+    margin-bottom: 16px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(255, 71, 87, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.progress-percent {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.progress-count {
+    color: var(--text-muted);
+}
+
+.progress-count strong {
+    color: var(--primary-color);
+}
+
+/* 价格区域 */
+.price-section {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.current-price {
+    display: flex;
+    align-items: baseline;
+}
+
+.current-price .currency {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.current-price .amount {
+    font-size: 28px;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.original-price {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+.save-info {
+    padding: 4px 8px;
+    background: rgba(255, 71, 87, 0.1);
+    border-radius: 6px;
+    font-size: 10px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.save-info span {
+    font-weight: 700;
+}
+
+/* 抢购按钮 */
+.buy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--primary-gradient-end) 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.buy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.5);
+}
+
+.buy-btn:active {
+    transform: translateY(0);
+}
+
+.buy-btn svg {
+    width: 16px;
+    height: 16px;
 }

@@ -1,46 +1,197 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
-    <title>accordion</title>
+    <title>Accordion Menu</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/font-awesome/css/font-awesome.css">
-    <!-- https://use.fontawesome.com/releases/v5.3.1/css/all.css -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div class="middle">
-      <div class="menu">
-        <li class="item" id="profile">
-          <a href="#profile" class="btn"><i class="fa fa-user"></i>Profile</a>
-          
-          <div class="smenu">
-            <a href="#" >Posts</a>         
-            <a href="#">Picture</a>  
-          </div>
-
-        </li> 
-
-        <li class="item" id="messages">
-          <a href="#messages" class="btn"><i class="fa fa-envelope"></i>Messages</a>
-          <div class="smenu">
-            <a href="#">new</a>
-            <a href="#">Sent</a>
-            <a href="#">Spam</a>
-          </div>
-        </li>
-
-        <li class="item" id="settings">
-          <a href="#settings" class="btn"><i class="fa fa-cog"></i>Settings</a>
-          <div class="smenu">
-            <a href="#">Password</a>
-            <a href="#">Language</a>
-          </div>
-        </li>
-
-        <li class="item">
-          <a class="btn" href="#"><i class="fa fa-sign-out"></i>Logout</a>
-        </li>
-      </div>
+    <!-- 背景装饰 -->
+    <div class="background-decoration">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
     </div>
+
+    <div class="container">
+      <!-- 左侧折叠菜单 -->
+      <aside class="sidebar">
+        <!-- Logo区域 -->
+        <div class="sidebar-header">
+          <div class="logo-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span class="logo-text">Menu</span>
+          </div>
+        </div>
+
+        <!-- 菜单列表 -->
+        <nav class="accordion-menu">
+          <!-- Profile -->
+          <div class="accordion-item" id="profile">
+            <button class="accordion-btn" href="#profile">
+              <div class="btn-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <span class="btn-text">Profile</span>
+              <div class="btn-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <a href="#" class="sub-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+                <span>Posts</span>
+              </a>
+              <a href="#" class="sub-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                <span>Picture</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Messages -->
+          <div class="accordion-item" id="messages">
+            <button class="accordion-btn" href="#messages">
+              <div class="btn-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <span class="btn-text">Messages</span>
+              <span class="badge">3</span>
+              <div class="btn-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <a href="#" class="sub-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <span>New</span>
+              </a>
+              <a href="#" class="sub-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 19V5m0 14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2m0 14V9a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v4z"/>
+                </svg>
+                <span>Sent</span>
+              </a>
+              <a href="#" class="sub-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 13V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7m16 0v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-5m16 0h-2.586a1 1 0 0 0-.707.293l-2.414 2.414a1 1 0 0 1-.707.293h-3.172a1 1 0 0 1-.707-.293l-2.414-2.414A1 1 0 0 0 6.586 13H4"/>
+                </svg>
+                <span>Spam</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Settings -->
+          <div class="accordion-item" id="settings">
+            <button class="accordion-btn" href="#settings">
+              <div class="btn-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 20h9"/>
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                </svg>
+              </div>
+              <span class="btn-text">Settings</span>
+              <div class="btn-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </div>
+            </button>
+            <div class="accordion-content">
+              <a href="#" class="sub-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+                <span>Password</span>
+              </a>
+              <a href="#" class="sub-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8l3.26 3.26A9.75 9.75 0 0 0 12 21a9 9 0 0 0 9-9z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span>Language</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Logout -->
+          <div class="accordion-item logout-item">
+            <button class="accordion-btn logout-btn">
+              <div class="btn-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                  <polyline points="16 17 21 12 16 7"/>
+                  <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+              </div>
+              <span class="btn-text">Logout</span>
+            </button>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- 右侧内容区 -->
+      <main class="content-area">
+        <div class="content-card">
+          <h2>Content Area</h2>
+          <p>Select an item from the menu to view content</p>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Accordion functionality
+      const accordionBtns = document.querySelectorAll('.accordion-btn');
+      accordionBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const item = this.parentElement;
+          const content = this.nextElementSibling;
+          
+          // Close all other accordions
+          document.querySelectorAll('.accordion-item').forEach(i => {
+            if (i !== item) {
+              i.classList.remove('active');
+              const otherContent = i.querySelector('.accordion-content');
+              if (otherContent) {
+                otherContent.style.maxHeight = '0';
+              }
+            }
+          });
+          
+          // Toggle current accordion
+          item.classList.toggle('active');
+          if (content) {
+            content.style.maxHeight = item.classList.contains('active') ? content.scrollHeight + 'px' : '0';
+          }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -1,36 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>音乐盒 - 精选曲目</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="panel">
+    <div class="container">
+        <div class="music-panel">
+            <header class="panel-header">
+                <div class="header-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18V5l12-2v13"/>
+                        <circle cx="6" cy="18" r="3"/>
+                        <circle cx="18" cy="16" r="3"/>
+                    </svg>
+                </div>
+                <h1 class="panel-title">音乐盒</h1>
+                <p class="panel-subtitle">精选曲目收藏</p>
+            </header>
 
-        <div class="panel-title">
-            <h3>音乐盒</h3>
-            <hr>
-        </div>
+            <main class="panel-content">
+                <div class="song-list">
+                    <label class="song-item" data-id="1">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">01</span>
+                        <span class="song-title">潮鸣</span>
+                    </label>
+                    <label class="song-item" data-id="2">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">02</span>
+                        <span class="song-title">空っぽの空に潰される</span>
+                    </label>
+                    <label class="song-item" data-id="3">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">03</span>
+                        <span class="song-title">夕颜</span>
+                    </label>
+                    <label class="song-item" data-id="4">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">04</span>
+                        <span class="song-title">回电我</span>
+                    </label>
+                    <label class="song-item" data-id="5">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">05</span>
+                        <span class="song-title">Heal the World</span>
+                    </label>
+                    <label class="song-item" data-id="6">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">06</span>
+                        <span class="song-title">夜行列车</span>
+                    </label>
+                    <label class="song-item" data-id="7">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">07</span>
+                        <span class="song-title">开往早晨的午夜</span>
+                    </label>
+                    <label class="song-item" data-id="8">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">08</span>
+                        <span class="song-title">銀の龍の背に乗って</span>
+                    </label>
+                    <label class="song-item" data-id="9">
+                        <input type="checkbox" class="song-checkbox">
+                        <span class="song-number">09</span>
+                        <span class="song-title">Arrietty's Song</span>
+                    </label>
+                </div>
+            </main>
 
-        <div class="panel-content">
-            <input type="checkbox">潮鸣<br>
-            <input type="checkbox">空っぽの空に潰される<br>
-            <input type="checkbox">夕颜<br>
-            <input type="checkbox">回电我<br>
-            <input type="checkbox">Heal the world<br>
-            <input type="checkbox">夜行列车<br>
-            <input type="checkbox">开往早晨的午夜<br>
-            <input type="checkbox">银の龙の背に乗って<br>
-            <input type="checkbox">Arrietty`s Song<br>           
-        </div>
-
-        <div class="panel-footer">
-            <hr>
-            <button id="allSelect">全选</button>
-            <button id="cancelSelect">取消选中</button>
-            <button id="reverseSelect">反选</button>
+            <footer class="panel-footer">
+                <div class="selection-info">
+                    <span class="selected-count">已选择 <span class="count-value">0</span> / <span class="total-count">9</span></span>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="allSelect">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        全选
+                    </button>
+                    <button class="btn btn-secondary" id="cancelSelect">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                            <path d="M15 3h6v6"/>
+                            <path d="M10 14L3 7"/>
+                        </svg>
+                        取消
+                    </button>
+                    <button class="btn btn-accent" id="reverseSelect">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        反选
+                    </button>
+                </div>
+            </footer>
         </div>
     </div>
     <script src="panel.js"></script>

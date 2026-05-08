@@ -1,49 +1,491 @@
-body{
-  background-color: #efedec;
-}
-table{
-  margin: 100px auto;
-  border-collapse: collapse;
-}
-th,td{
-  padding: 20px;
-  text-align: center;
-  width: 130px;
-}
-caption{
-  height: 100px;
-  margin-bottom: 40px;
-}
-p{
-  padding: 0;
-  margin: 0;
-}
-.title{
-  height: 50px;
-  font: bold 40px/50px "微软雅黑";
-}
-.sub-title{
-  font: 18px/50px "SF-Pro-Text-Light";
-}
-tr td,tr th{
-  border-bottom:1px solid #221e1f
+:root {
+    --primary-color: #667eea;
+    --primary-gradient-start: #667eea;
+    --primary-gradient-end: #764ba2;
+    --accent-color: #f093fb;
+    --bg-gradient-start: #1e1b4b;
+    --bg-gradient-end: #312e81;
+    --sidebar-bg: rgba(30, 27, 75, 0.95);
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --math-color: #6366f1;
+    --physics-color: #f59e0b;
+    --english-color: #10b981;
+    --programming-color: #8b5cf6;
+    --politics-color: #ef4444;
+    --other-color: #64748b;
 }
 
-table tr th:first-of-type{
-  border-bottom: 3px solid #221e1f;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Serif SC', 'Microsoft YaHei', sans-serif;
 }
 
-tbody tr:last-of-type th{
-  border-bottom: none;
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-tbody tr:last-of-type td{
-  border-bottom: none;
+/* 背景装饰 */
+.background-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
 }
 
-thead tr th:nth-of-type(2n){
-  background-color: #e2ddda;
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.15;
+    animation: float 10s ease-in-out infinite;
 }
-tr td:nth-of-type(2n+1){
-  background-color: #e2ddda;
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(167, 139, 250, 0.5) 0%, transparent 70%);
+    top: -150px;
+    left: -150px;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(240, 147, 251, 0.5) 0%, transparent 70%);
+    bottom: -100px;
+    right: -100px;
+    animation-delay: -5s;
+}
+
+.shape-3 {
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.5) 0%, transparent 70%);
+    top: 40%;
+    right: 15%;
+    animation-delay: -3s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-30px) rotate(5deg);
+    }
+}
+
+/* 容器 */
+.schedule-container {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    z-index: 10;
+}
+
+/* 左侧侧边栏 */
+.sidebar {
+    width: 280px;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    animation: slideInLeft 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.logo-wrapper {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 16px;
+    background: linear-gradient(135deg, var(--primary-gradient-start) 0%, var(--accent-color) 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+}
+
+.logo-wrapper svg {
+    width: 32px;
+    height: 32px;
+    color: white;
+}
+
+.sidebar-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: 3px;
+}
+
+.sidebar-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+}
+
+/* 今日课程 */
+.today-section {
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    background: rgba(167, 139, 250, 0.1);
+    border-radius: 8px;
+}
+
+.section-header svg {
+    width: 14px;
+    height: 14px;
+    color: var(--primary-color);
+}
+
+.today-courses {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.course-tag {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    transition: var(--transition-base);
+}
+
+.course-tag:hover {
+    transform: translateX(4px);
+}
+
+.course-tag.math {
+    background: linear-gradient(135deg, var(--math-color) 0%, #4f46e5 100%);
+}
+
+.course-tag.physics {
+    background: linear-gradient(135deg, var(--physics-color) 0%, #d97706 100%);
+}
+
+.course-tag.english {
+    background: linear-gradient(135deg, var(--english-color) 0%, #059669 100%);
+}
+
+.course-tag .time {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* 课程统计 */
+.stats-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+    background: rgba(167, 139, 250, 0.1);
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* 科目分类 */
+.subjects-section {
+    margin-top: 8px;
+}
+
+.subjects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.subject-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: var(--transition-base);
+}
+
+.subject-item:hover {
+    background: rgba(167, 139, 250, 0.1);
+}
+
+.subject-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.subject-dot.math {
+    background: var(--math-color);
+}
+
+.subject-dot.physics {
+    background: var(--physics-color);
+}
+
+.subject-dot.english {
+    background: var(--english-color);
+}
+
+.subject-dot.programming {
+    background: var(--programming-color);
+}
+
+.subject-dot.politics {
+    background: var(--politics-color);
+}
+
+.subject-item span:first-of-type {
+    flex: 1;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.subject-item .count {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+/* 右侧课程表主体 */
+.schedule-main {
+    flex: 1;
+    animation: slideInRight 0.6s ease-out 0.2s both;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.schedule-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.week-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition-base);
+}
+
+.nav-btn:hover {
+    background: rgba(167, 139, 250, 0.2);
+    color: var(--primary-color);
+}
+
+.nav-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.week-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    min-width: 80px;
+    text-align: center;
+}
+
+/* 课程表网格 */
+.schedule-grid {
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.time-column {
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.time-cell {
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.time-cell.header {
+    font-weight: 600;
+    color: var(--text-secondary);
+    background: rgba(167, 139, 250, 0.15);
+}
+
+.day-column {
+    flex: 1;
+    min-width: 120px;
+}
+
+.day-header {
+    padding: 14px 8px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.course-cell {
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    transition: var(--transition-base);
+}
+
+.course-cell:hover {
+    background: rgba(167, 139, 250, 0.15);
+    transform: scale(1.02);
+}
+
+.course-cell.merged {
+    font-size: 11px;
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.course-cell.math {
+    background: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+}
+
+.course-cell.physics {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fcd34d;
+}
+
+.course-cell.english {
+    background: rgba(16, 185, 129, 0.2);
+    color: #6ee7b7;
+}
+
+.course-cell.programming {
+    background: rgba(139, 92, 246, 0.2);
+    color: #c4b5fd;
+}
+
+.course-cell.politics {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+}
+
+.course-cell.other {
+    background: rgba(100, 116, 139, 0.2);
+    color: #cbd5e1;
 }

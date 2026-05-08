@@ -1,47 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>服饰相册</title>
     <link rel="stylesheet" href="styles/YiFu.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img src="images/1.jpg" id="bigImg" width="500" class="smallImg" alt="">
-    <br>
-    <br>
-    <ul>
-        <li class="active">
-            <a href="">
-                <img src="images/1.jpg" width="50" class="smallImg" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="images/2.jpg" width="50" class="smallImg" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="images/3.jpg" width="50" class="smallImg" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="images/4.jpg" width="50" class="smallImg" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="">
-                <img src="images/5.jpg" width="50" class="smallImg" alt="">
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="images/6.jpg" width="50" class="smallImg" alt="">
-            </a>
-        </li>
-    </ul>
+    <div class="gallery-container">
+        <!-- 左侧缩略图面板 -->
+        <aside class="thumbnail-panel">
+            <header class="panel-header">
+                <h2 class="panel-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                    精选服饰
+                </h2>
+            </header>
+            <nav class="thumbnail-list">
+                <button class="thumbnail-item active" data-index="0">
+                    <img src="images/1.jpg" alt="服饰 1" class="thumbnail-img">
+                    <span class="thumbnail-label">款式 01</span>
+                </button>
+                <button class="thumbnail-item" data-index="1">
+                    <img src="images/2.jpg" alt="服饰 2" class="thumbnail-img">
+                    <span class="thumbnail-label">款式 02</span>
+                </button>
+                <button class="thumbnail-item" data-index="2">
+                    <img src="images/3.jpg" alt="服饰 3" class="thumbnail-img">
+                    <span class="thumbnail-label">款式 03</span>
+                </button>
+                <button class="thumbnail-item" data-index="3">
+                    <img src="images/4.jpg" alt="服饰 4" class="thumbnail-img">
+                    <span class="thumbnail-label">款式 04</span>
+                </button>
+                <button class="thumbnail-item" data-index="4">
+                    <img src="images/5.jpg" alt="服饰 5" class="thumbnail-img">
+                    <span class="thumbnail-label">款式 05</span>
+                </button>
+                <button class="thumbnail-item" data-index="5">
+                    <img src="images/6.jpg" alt="服饰 6" class="thumbnail-img">
+                    <span class="thumbnail-label">款式 06</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- 右侧大图展示区 -->
+        <main class="preview-panel">
+            <div class="preview-wrapper">
+                <div class="preview-frame">
+                    <img src="images/1.jpg" id="bigImg" class="preview-image" alt="精选服饰">
+                    <div class="preview-overlay">
+                        <div class="overlay-content">
+                            <span class="image-counter">1 / 6</span>
+                            <span class="image-title">精选服饰系列</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="preview-info">
+                    <h3 class="info-title" id="infoTitle">款式 01</h3>
+                    <p class="info-desc">点击左侧缩略图查看更多款式</p>
+                </div>
+            </div>
+        </main>
+    </div>
     <script src="scripts/YiFu.js"></script>
 </body>
 </html>

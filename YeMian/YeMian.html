@@ -1,21 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>HTML乐园 - 开启你的网页之旅</title>
   <link rel="stylesheet" href="style/YeMian.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  
-  <div class="container">
-    <h1>Let's start our first page!</h1>
-    <p>欢迎大家来到HTML乐园，通过本书学习，你将获得独立完成静态页面的技能，
-      一起来开启你的第一个页面吧！
-    </p>
-    <br>
-    <div class="btn" id="start">Start</div>
+  <!-- 背景装饰 -->
+  <div class="background-decoration">
+    <div class="floating-circle circle-1"></div>
+    <div class="floating-circle circle-2"></div>
+    <div class="floating-circle circle-3"></div>
+  </div>
+
+  <!-- 主内容区域 -->
+  <div class="main-container">
+    <!-- 左侧内容区 -->
+    <section class="content-section">
+      <!-- Logo和标题 -->
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <line x1="3" y1="9" x2="21" y2="9"/>
+          <line x1="9" y1="21" x2="9" y2="9"/>
+        </svg>
+        <span class="brand-name">HTML乐园</span>
+      </div>
+
+      <!-- 主标题 -->
+      <h1 class="main-title">
+        <span class="title-line">Let's start our</span>
+        <span class="title-highlight">first page!</span>
+      </h1>
+
+      <!-- 描述文字 -->
+      <p class="description">
+        欢迎来到 <span class="highlight">HTML乐园</span>！
+        通过系统学习，你将掌握独立完成静态页面的技能。
+        现在，让我们一起开启你的第一个网页之旅吧！
+      </p>
+
+      <!-- 特性列表 -->
+      <ul class="features-list">
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>零基础入门</span>
+        </li>
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span>实战项目驱动</span>
+        </li>
+        <li class="feature-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span>社区交流支持</span>
+        </li>
+      </ul>
+
+      <!-- 开始按钮 -->
+      <button class="start-btn" id="start">
+        <span class="btn-text">开始学习</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- 右侧装饰区 -->
+    <section class="visual-section">
+      <div class="card card-1">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <line x1="3" y1="9" x2="21" y2="9"/>
+          <line x1="9" y1="21" x2="9" y2="9"/>
+        </svg>
+        <span>HTML5</span>
+      </div>
+      <div class="card card-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19.428 15.428a2 2 0 0 0-1.022-.547l-2.387-.477a6 6 0 0 0-3.86.517l-.318.158a6 6 0 0 1-3.86.517L6.05 15.21a2 2 0 0 0-1.806.547M8 4h8l-1 1v5.172a2 2 0 0 0 .586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 0 0 9 10.172V5L8 4z"/>
+        </svg>
+        <span>CSS3</span>
+      </div>
+      <div class="card card-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+        <span>JavaScript</span>
+      </div>
+      <div class="card card-4">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>响应式设计</span>
+      </div>
+    </section>
   </div>
 </body>
 </html>

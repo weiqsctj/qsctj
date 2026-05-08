@@ -1,41 +1,101 @@
 /**
- * @description
- * @author (weiqsctj-清时)
+ * @description 音乐盒曲目选择器
+ * @author weiqsctj-清时
  * @date 2022-01-19
- * @param {*} id
- * @returns 
+ * @module MusicBox
  */
 
-function $(id){
-    return typeof id === 'string'?document.getElementById(id):null;
-}
+// 模块封装
+(function(window) {
+    'use strict';
 
-//1.获取所有的复选框
-var inputs = document.getElementsByTagName('input');
+    // DOM元素引用
+    const elements = {
+        checkboxes: document.querySelectorAll('.song-checkbox'),
+        countValue: document.querySelector('.count-value'),
+        allSelectBtn: document.getElementById('allSelect'),
+        cancelSelectBtn: document.getElementById('cancelSelect'),
+        reverseSelectBtn: document.getElementById('reverseSelect')
+    };
 
-
-//2.全选
-$('allSelect').onclick = function(){
-    for(var i=0;i<inputs.length;i++){
-        inputs[i].checked = true;
+    /**
+     * 更新选中计数
+     */
+    function updateCount() {
+        let count = 0;
+        elements.checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) count++;
+        });
+        elements.countValue.textContent = count;
     }
-}
 
-//3.取消选中
-$('cancelSelect').onclick = function(){
-    for(var i=0;i<inputs.length;i++){
-        inputs[i].checked = false;
+    /**
+     * 全选
+     */
+    function selectAll() {
+        elements.checkboxes.forEach(function(checkbox) {
+            checkbox.checked = true;
+        });
+        updateCount();
     }
-}
 
-//4.反选
-$('reverseSelect').onclick = function(){
-    for(var i=0;i<inputs.length;i++){
-        // if(inputs[i].checked){
-        //     inputs[i].checked = false;
-        // }else{
-        //     inputs[i].checked = true;
-        // }
-        inputs[i].checked = !inputs[i].checked;
+    /**
+     * 取消选中
+     */
+    function cancelAll() {
+        elements.checkboxes.forEach(function(checkbox) {
+            checkbox.checked = false;
+        });
+        updateCount();
     }
-}
+
+    /**
+     * 反选
+     */
+    function reverseSelect() {
+        elements.checkboxes.forEach(function(checkbox) {
+            checkbox.checked = !checkbox.checked;
+        });
+        updateCount();
+    }
+
+    /**
+     * 初始化事件绑定
+     */
+    function initEvents() {
+        // 按钮事件
+        elements.allSelectBtn.addEventListener('click', selectAll);
+        elements.cancelSelectBtn.addEventListener('click', cancelAll);
+        elements.reverseSelectBtn.addEventListener('click', reverseSelect);
+
+        // 复选框变化事件
+        elements.checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', updateCount);
+        });
+    }
+
+    /**
+     * 初始化模块
+     */
+    function init() {
+        initEvents();
+        updateCount();
+    }
+
+    // 暴露公共方法（方便Vue调用）
+    window.MusicBox = {
+        init: init,
+        selectAll: selectAll,
+        cancelAll: cancelAll,
+        reverseSelect: reverseSelect,
+        updateCount: updateCount
+    };
+
+    // DOM加载完成后自动初始化
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})(window);
